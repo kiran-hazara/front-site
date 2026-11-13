@@ -229,9 +229,7 @@ $new_arrivals = mysqli_fetch_all($result3, MYSQLI_ASSOC);
       </div>
     </div>
   </section>
-
-  
-  <!-- Section 5: New Arrivals -->
+<!-- // Section 5: New Arrivals -->
   <section class="section-padding bg-white">
     <div class="container">
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4">
@@ -253,8 +251,9 @@ $new_arrivals = mysqli_fetch_all($result3, MYSQLI_ASSOC);
                 <div class="product-badges">
                   <?php if ($new['is_sale'] == 1) { ?>
                     <span class="badge-sale">Sale</span>
+                  <?php } else { ?>
+                    <span class="badge-new">New</span>
                   <?php } ?>
-                  <span class="badge-new">New</span>
                 </div>
                 <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1002">
                   <i class="bi bi-heart"></i>
@@ -303,6 +302,8 @@ $new_arrivals = mysqli_fetch_all($result3, MYSQLI_ASSOC);
       </div>
     </div>
   </section>
+
+
 
 
   <!-- Section 6: Brand Benefits -->
