@@ -57,11 +57,19 @@ $new_arrivals = mysqli_fetch_all($result3, MYSQLI_ASSOC);
 
 
 
+$q4 = "SELECT * FROM `cms_settings`";
+
+$result4 = mysqli_query($conn, $q4);
+$cms_data = mysqli_fetch_assoc($result4);
+
+
+
+
 
 
 
 // echo "<pre>";
-// print_r($best_sellers);
+// print_r($cms_data);
 // echo "</pre>";
 // exit;
 
@@ -69,17 +77,17 @@ $new_arrivals = mysqli_fetch_all($result3, MYSQLI_ASSOC);
 ?>
 
 <main>
-  <!-- Section 1: Hero Banner -->
+ <!-- Section 1: Hero Banner -->
   <section class="hero-section">
     <img src="https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=1600&auto=format&fit=crop" class="hero-bg-img" alt="Luxury Handcrafted Men's Footwear">
     <div class="container position-relative z-2">
       <div class="row align-items-center">
         <div class="col-lg-7">
           <div class="hero-content text-start">
-            <span class="hero-subtitle">Autumn / Winter 2026 Collection</span>
-            <h1 class="hero-title font-editorial">Step Into Uncompromising Refinement.</h1>
+            <span class="hero-subtitle"><?php echo $cms_data['hero_subtitle'] ?></span>
+            <h1 class="hero-title font-editorial"><?php echo $cms_data['hero_headline'] ?></h1>
             <p class="lead text-white-50 mb-4" style="max-width: 540px;">
-              Handcrafted from full-grain Italian calfskin and Goodyear-welted for generations of distinction. Engineered for the modern Pakistani gentleman.
+              <?php echo $cms_data['hero_lead'] ?>
             </p>
             <div class="d-flex flex-wrap gap-3 hero-buttons">
               <a href="shop.php" class="btn btn-nova-dark" style="background: #ffffff; color: #111; border-color: #fff;">
@@ -164,7 +172,7 @@ $new_arrivals = mysqli_fetch_all($result3, MYSQLI_ASSOC);
                   <i class="bi bi-heart"></i>
                 </button>
                 <a href="product-details.php">
-                  <img src="http://localhost:8081/<?php echo $product['image_url'] ?>" alt="Regal Wholecut Oxford" loading="lazy">
+                  <img src="https://images.unsplash.com/photo-1533867617858-e7b97e060509?q=80&w=800&auto=format&fit=crop"<?php echo $product['image_url'] ?>" alt="Regal Wholecut Oxford" loading="lazy">
                 </a>
                 <div class="product-quick-actions">
                   <button class="quick-view-btn btn-quick-add" data-product-title="Regal Wholecut Oxford">
@@ -208,14 +216,15 @@ $new_arrivals = mysqli_fetch_all($result3, MYSQLI_ASSOC);
       <div class="row g-0 align-items-center">
         <div class="col-lg-6">
           <div class="promo-content">
-            <span class="badge bg-warning text-dark text-uppercase fw-bold px-3 py-1 mb-3">Seasonal Privilege</span>
-            <h2 class="display-6 fw-bold mb-3 font-editorial text-white">The Goodyear Welted Oxford Experience</h2>
+                 <span class="badge bg-warning text-dark text-uppercase fw-bold px-3 py-1 mb-3">Seasonal Privilege</span>
+            <h2 class="display-6 fw-bold mb-3 font-editorial text-white"><?php echo $cms_data ['promo_headline'] ?></h2>
             <p class="text-white-50 mb-4" style="line-height: 1.8;">
               Constructed with 200+ meticulous hand steps using durable closed-channel soles. Enjoy complimentary cedar shoe trees with every Black Label pair this season.
             </p>
             <div class="d-flex flex-wrap gap-3">
               <a href="product-details.php" class="btn btn-warning fw-bold text-dark text-uppercase px-4 py-2">
-                Discover The Oxford
+                <?php echo $cms_data ['promo_btn_text'] ?>
+
               </a>
               <a href="shop.php" class="btn btn-outline-light text-uppercase px-4 py-2">
                 Browse Sale
